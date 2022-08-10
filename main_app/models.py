@@ -7,7 +7,7 @@ from django.forms import BooleanField, DateTimeField
 
 class Poll(models.Model):
   title = models.CharField(max_length=280)
-  notes = models.TextField(max_length=500)
+  notes = models.TextField(max_length=500, blank=True)
   public = models.BooleanField(default=False)
   expired = models.BooleanField(default=False)
   created_at = models.DateTimeField(auto_now_add=True)

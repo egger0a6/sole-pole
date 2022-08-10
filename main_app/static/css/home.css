@@ -20,7 +20,6 @@ main > section {
 }
 
 .logo-container {
-  font-family: 'Orbitron';
   max-width: 375px;
 }
 
@@ -30,11 +29,15 @@ main > section {
   font-size: 3rem;
   width: 80%;
   text-align: center;
+  background: rgb(5,187,180, 0.85);
+  border: var(--borders);
+  border-radius: 15px;
+  padding: 10px;
 }
 
-.poll-container img {
-  border-radius: 50%;
-  box-shadow: 0 0 40px #AAA;
+.poll-container h1 {
+  font-size: 6rem;
+  border-radius: 10px;
 }
 
 .login {

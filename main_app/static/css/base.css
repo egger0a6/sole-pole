@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
-  background: url("/static/images/bg_image.jpg") no-repeat center center fixed; 
+  background: url("/static/images/bg_image.png") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,16 +34,16 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  --nav-bg: rgb(167,45,103, 0.6);
-  --nav-bg-ff: rgb(167,45,103, 0.6);
-  --borders: rgb(167,45,103) solid 2px;
+  --nav-bg: rgb(5,187,180, 0.7);
+  --nav-bg-ff: rgb(100, 149, 237);
+  --borders: rgb(5,187,180) solid 3px;
   --text-color: white;
-  --link-hover-color: rgb(16, 56, 158);
+  --link-hover-color: rgb(2,92,89);
   --button-bg: rgb(245, 245, 245, 0.5);
   --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
+  --submit: rgb(5,187,180);
+  --warn: rgb(255,205,0);
+  --danger: rgb(255,48,81);
   --secondary: rgb(57, 57, 57);
   --card-box-shadow: 0 0 15px #AAA;
   --font-xtreme: 4.2rem;
