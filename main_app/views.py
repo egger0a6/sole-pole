@@ -1,4 +1,3 @@
-from multiprocessing import context
 import requests
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView

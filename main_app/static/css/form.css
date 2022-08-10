@@ -1,0 +1,50 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+table {
+  padding: 0 40px;
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  padding: 6px 0 0 0;
+  font-weight: normal;
+  vertical-align: top;
+  font-size: var(--font-reg);
+}
+
+label {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+td {
+  max-width: 60%;
+}
+
+td > * {
+  width: 100%;
+  padding: 2px 4px;
+  font-size: var(--font-l);
+}
+
+td > textarea {
+  height: calc(4 * var(--font-l) + 8px);
+  font-family: inherit;
+}
+
+.btn {
+  align-self: center;
+  margin-right: 40px;
+  color: white;
+  border-color: white;
+  background: var(--nav-bg);
+}
+
+.btn:hover {
+  background: rgb(249,34,209, 0.6);
+}
