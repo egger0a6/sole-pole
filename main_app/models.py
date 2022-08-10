@@ -1,5 +1,5 @@
 from django.db import models
-from django import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.forms import BooleanField, DateTimeField
 
@@ -8,10 +8,10 @@ from django.forms import BooleanField, DateTimeField
 class Poll(models.Model):
   title = models.CharField(max_length=280)
   notes = models.TextField(max_length=500)
-  public = BooleanField(default=False)
-  expired = BooleanField(default=False)
-  created_at = DateTimeField(auto_now_add=True)
-  updated_at = DateTimeField(auto_now=True)
+  public = models.BooleanField(default=False)
+  expired = models.BooleanField(default=False)
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
