@@ -23,7 +23,7 @@ class Poll(models.Model):
 
 class Option(models.Model):
   title = models.CharField(max_length=100)
-  count = models.PositiveIntegerField()
+  count = models.PositiveIntegerField(default=0)
   poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
 
   def __str__(self):

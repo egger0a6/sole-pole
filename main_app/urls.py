@@ -10,5 +10,6 @@ urlpatterns = [
     path('polls/<int:pk>/update', views.PollUpdate.as_view(), name='polls_update'),
     path('polls/<int:pk>/delete', views.PollDelete.as_view(), name='polls_delete'),
     path('polls/<int:poll_id>/add_option/', views.add_option, name='add_option'),
+    path('polls/<int:poll_id>/update_option/<int:option_id>/', views.update_option, name='update_option'),
     path('accounts/signup', views.signup, name='signup'),
 ]

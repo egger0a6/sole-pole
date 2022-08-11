@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Poll
+from .models import Poll, Option
 from .forms import OptionForm
 
 
@@ -36,9 +36,14 @@ def add_option(request, poll_id):
   form = OptionForm(request.POST)
   if form.is_valid():
     new_option = form.save(commit=False)
-    new_option.count = 1
     new_option.poll_id = poll_id
     new_option.save()
+  return redirect('polls_detail', poll_id=poll_id)
+
+def update_option(request, poll_id, option_id):
+  option = Option.objects.get(id=option_id)
+  option.count += 1
+  option.save()
   return redirect('polls_detail', poll_id=poll_id)
 
 def signup(request):

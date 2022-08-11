@@ -42,13 +42,19 @@
     {% if poll.option_set.all.count %}
       <table>
         <thead>
-          <tr><th>Options</th><th>Results</th></tr>
+          <tr><th>Options</th><th>Results</th><th></th></tr>
         </thead>
         <tbody>
           {% for option in poll.option_set.all %}
             <tr>
               <td>{{ option.title }}</td>
-              <td>{{ option.count}}</td>
+              <td>{{ option.count }}</td>
+              <td>
+                <form action="{% url 'update_option' poll.id option.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit">Vote</button>
+                </form>
+              </td>
             </tr>
           {% endfor %}
         </tbody>
