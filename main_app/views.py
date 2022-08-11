@@ -21,8 +21,12 @@ def about(request):
   return render(request, 'about.html')
 
 def polls_index(request):
-  polls = Poll.objects.all()
-  return render(request, 'polls/index.html', {'polls': polls})
+  public_polls = Poll.objects.filter(public=True)
+  user_polls = Poll.objects.filter(user=request.user)
+  return render(request, 'polls/index.html', {
+    'public_polls': public_polls,
+    'user_polls': user_polls
+  })
 
 def polls_detail(request, poll_id):
   poll = Poll.objects.get(id=poll_id)
