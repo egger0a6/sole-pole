@@ -22,7 +22,9 @@ def about(request):
 
 def polls_index(request):
   public_polls = Poll.objects.filter(public=True)
-  user_polls = Poll.objects.filter(user=request.user)
+  user_polls = []
+  if(request.user.id):
+    user_polls = Poll.objects.filter(user=request.user)
   return render(request, 'polls/index.html', {
     'public_polls': public_polls,
     'user_polls': user_polls
