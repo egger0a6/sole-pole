@@ -1,3 +1,5 @@
+from ast import Del
+from asyncore import poll
 import requests
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -30,6 +32,15 @@ def polls_detail(request, poll_id):
     'option_form': option_form,
   })
 
+def add_option(request, poll_id):
+  form = OptionForm(request.POST)
+  if form.is_valid():
+    new_option = form.save(commit=False)
+    new_option.count = 1
+    new_option.poll_id = poll_id
+    new_option.save()
+  return redirect('polls_detail', poll_id=poll_id)
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -53,3 +64,12 @@ class PollCreate(CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+
+
+class PollUpdate(UpdateView):
+  model = Poll
+  fields = ['title', 'notes', 'public']
+
+class PollDelete(DeleteView):
+  model = Poll
+  success_url = '/polls/'
