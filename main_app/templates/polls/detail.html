@@ -16,10 +16,12 @@
     {% if poll.notes %}
       <h2>{{ poll.notes }}</h2>
     {% endif %}
-    <div class="poll-actions">
-      <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'polls_delete' poll.id %}" class="btn danger">Delete</a>
-    </div>
+    {% if user.id == poll.user_id %}
+      <div class="poll-actions">
+        <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'polls_delete' poll.id %}" class="btn danger">Delete</a>
+      </div>
+    {% endif %}
   </div>
 </section>
 

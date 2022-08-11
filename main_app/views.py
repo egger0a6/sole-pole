@@ -1,5 +1,3 @@
-from ast import Del
-from asyncore import poll
 import requests
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -32,6 +30,7 @@ def polls_index(request):
 
 def polls_detail(request, poll_id):
   poll = Poll.objects.get(id=poll_id)
+  print(poll.created_at)
   option_form = OptionForm()
   return render(request, 'polls/detail.html', {
     'poll': poll,
@@ -77,10 +76,10 @@ class PollCreate(CreateView):
     return super().form_valid(form)
 
 
-class PollUpdate(UpdateView):
+class PollUpdate(LoginRequiredMixin, UpdateView):
   model = Poll
   fields = ['title', 'notes', 'public']
 
-class PollDelete(DeleteView):
+class PollDelete(LoginRequiredMixin, DeleteView):
   model = Poll
   success_url = '/polls/'
