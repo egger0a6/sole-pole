@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Poll, Option
-from .forms import OptionForm
+from .forms import OptionForm, PollDateTimeForm
 
 
 # Create your views here.
@@ -68,8 +68,8 @@ def signup(request):
 
 
 class PollCreate(CreateView):
+  form_class = PollDateTimeForm
   model = Poll
-  fields = ['title', 'notes', 'public', 'expires']
 
   def form_valid(self, form):
     form.instance.user = self.request.user
