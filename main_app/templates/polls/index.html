@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/polls/poll-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Available Polls</h1>
+</section>
+
+<section class="card-container">
+  {% for poll in public_polls %}
+    <div class="card">
+      <a href="{% url 'polls_detail' poll.id %}">
+        <div class="card-content">
+          <h2 class="card-title">{{ poll.title }}</h2>
+          {% if poll.notes %}
+          <p>{{ poll.notes }}</p>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+<section class="page-header">
+  <h1>Your Polls</h1>
+</section>
+{% if user.is_authenticated %}
+  <section class="card-container">
+    {% for poll in user_polls %}
+      <div class="card">
+        <a href="{% url 'polls_detail' poll.id %}">
+          <div class="card-content">
+            <h2 class="card-title">{{ poll.title }}</h2>
+            {% if poll.notes %}
+            <p>{{ poll.notes }}</p>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
+
+{% endblock %}

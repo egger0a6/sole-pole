@@ -1,0 +1,34 @@
+.card-container {
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center ;
+}
+
+.card {
+  width: 275px;
+  margin: 10px;
+  border: var(--borders);
+}
+
+.card-content {
+  padding: 10px;
+  width: 100%;
+  background: rgb(5,187,180, 0.7);
+}
+
+.card > a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.card h2 {
+  margin: 10px 0;
+  font-size: var(--font-xl);
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: var(--font-reg);
+}
