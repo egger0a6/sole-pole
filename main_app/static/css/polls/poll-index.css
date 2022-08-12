@@ -12,7 +12,9 @@
 }
 
 .list-group-item {
-  background: rgb(100, 149, 237);
+  background: rgb(39,67,157);
+  border-bottom: 2px solid rgb(100, 149, 237);
+  padding: 10px;
 }
 
 .list-group-item > a {
@@ -20,37 +22,22 @@
   color: var(--text-color);
 }
 
-.card-container {
-  padding: 0 30px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center ;
+.list-group-item h3 {
+  font-weight: 700;
+  font-size: 2rem;
 }
 
-.card {
-  width: 275px;
-  margin: 10px;
-  border: var(--borders);
+.btn {
+  align-self: center;
+  color: white;
+  border-color: white;
+  background: rgb(100, 149, 237, 0.6);
 }
 
-.card-content {
-  padding: 10px;
-  width: 100%;
-  background: rgb(5,187,180, 0.7);
+.btn:hover {
+  background: rgb(46,89,167);
 }
 
-.card > a {
-  text-decoration: none;
-  color: var(--text-color);
-}
-
-.card h2 {
-  margin: 10px 0;
-  font-size: var(--font-xl);
-}
-
-.card p {
-  margin: 5px 0;
-  font-size: var(--font-reg);
+p {
+  text-align: center;
 }

@@ -1,9 +1,14 @@
-.poll-container {
-  padding: 35px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.container {
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(5,187,180,0.5);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .poll-details {
@@ -29,11 +34,6 @@
 
 .subsection-content {
   margin: 0 8px;
-}
-
-.color-block {
-  margin: 5px;
-  margin-right: 10px;
 }
 
 .poll-details h1 {
@@ -64,7 +64,6 @@
   border: var(--borders);
   border-radius: var(--card-border-radius);
   padding: 10px;
-  box-shadow: var(--card-box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,40 +109,4 @@
   font-size: var(--font-l);
   padding: 5px 5px 0;
   border-bottom: rgb(2,92,89) solid 2px;
-}
-
-#file-input {
-  overflow: hidden;
-  position: absolute;
-  width: 0.1px;
-  height: 0.1px;
-}
-
-#file-name {
-  margin-bottom: 10px;
-}
-
-@media only screen and (min-width: 768px) {
-  .poll-container {
-    padding: 35px 30px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-  }
-
-  .options-container {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  .options-container > section {
-    width: 45%;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .options-container {
-    padding: 0 40px;
-  }
 }

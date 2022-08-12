@@ -29,10 +29,17 @@ main > section {
   font-size: 3rem;
   width: 80%;
   text-align: center;
-  background: rgb(5,187,180, 0.85);
+  background: rgb(5,187,180, 0.5);
   border: var(--borders);
   border-radius: 15px;
   padding: 10px;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .poll-container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .poll-container h1 {
@@ -46,7 +53,14 @@ main > section {
   justify-content: center;
   align-items: center;
   width: 80%;
-  background: rgb(5,187,180, 0.85);
+  background: rgb(5,187,180, 0.5);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .login {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .login h1 {
