@@ -16,6 +16,8 @@
     {% if poll.notes %}
       <h2>{{ poll.notes }}</h2>
     {% endif %}
+    <h3>{{ poll.expires }}</h3>
+    <h3>{{ poll.expired }}</h3>
     {% if user.id == poll.user_id %}
       <div class="poll-actions">
         <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
@@ -61,6 +63,12 @@
             </tr>
           {% endfor %}
         </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Votes:</td>
+            <td>{{ total_votes }}</td>
+          </tr>
+        </tfoot>
       </table>
     {% else %}
       <div class="subsection-content">
@@ -68,6 +76,11 @@
       </div>
     {% endif %}
   </section>
+  <div>
+    {% if chart_url %}
+      <img src="{{ chart_url }}" alt="chart with poll results">
+    {% endif %}
+  </div>
 </div>
 
 {% endblock %}
