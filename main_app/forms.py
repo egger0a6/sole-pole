@@ -13,5 +13,5 @@ class PollDateTimeForm(ModelForm):
     model = Poll
     fields = ['title', 'notes', 'public', 'expires']
     widgets = {
-      'expires': DateTimePickerInput
+      'expires': DateTimePickerInput()
     }

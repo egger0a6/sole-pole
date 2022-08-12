@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Poll, Option
 from .forms import OptionForm, PollDateTimeForm
-
+from datetime import datetime
 
 # Create your views here.
 
@@ -19,6 +19,12 @@ def about(request):
   return render(request, 'about.html')
 
 def polls_index(request):
+  all_polls = Poll.objects.all()
+  for poll in all_polls:
+    if poll.expires:
+      if (poll.expires.utcnow() < datetime.now()):
+        poll.expired = True
+        poll.save()
   public_polls = Poll.objects.filter(public=True)
   user_polls = []
   if(request.user.id):
@@ -30,7 +36,6 @@ def polls_index(request):
 
 def polls_detail(request, poll_id):
   poll = Poll.objects.get(id=poll_id)
-  print(poll.created_at)
   option_form = OptionForm()
   return render(request, 'polls/detail.html', {
     'poll': poll,
@@ -77,8 +82,8 @@ class PollCreate(CreateView):
 
 
 class PollUpdate(LoginRequiredMixin, UpdateView):
+  form_class = PollDateTimeForm
   model = Poll
-  fields = ['title', 'notes', 'public', 'expires']
 
 class PollDelete(LoginRequiredMixin, DeleteView):
   model = Poll

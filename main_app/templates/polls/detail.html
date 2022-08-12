@@ -16,6 +16,8 @@
     {% if poll.notes %}
       <h2>{{ poll.notes }}</h2>
     {% endif %}
+    <h3>{{ poll.expires }}</h3>
+    <h3>{{ poll.expired }}</h3>
     {% if user.id == poll.user_id %}
       <div class="poll-actions">
         <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
