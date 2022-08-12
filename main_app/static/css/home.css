@@ -46,6 +46,7 @@ main > section {
   justify-content: center;
   align-items: center;
   width: 80%;
+  background: rgb(5,187,180, 0.85);
 }
 
 .login h1 {
@@ -89,11 +90,21 @@ main > section {
     border: var(--borders);
     padding: 20px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
     width: 100%;
   }
 
   .logo-container {
     max-width: 520px;
   }
+}
+
+.btn {
+  align-self: center;
+  color: white;
+  border-color: white;
+  background: var(--nav-bg);
+}
+
+.btn:hover {
+  background: rgb(2,92,89);
 }
