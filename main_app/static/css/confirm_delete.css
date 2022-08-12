@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(5,187,180,0.5);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.btn {
+  background: rgb(100, 149, 237, 0.6);
+}
+
+.btn:hover {
+  background: rgb(46,89,167);
+}
