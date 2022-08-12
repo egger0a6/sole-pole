@@ -58,7 +58,7 @@ def chart_url_builder(options):
   url_str += chdl
   url_str += '&chdls=000000,15&chds=0,50000&chm='
   url_str += chm
-  url_str += '&chma=0,0,10,10&chs=700x200&cht=bhg&chxs=0,000000,0,0,_&chxt=y&chan'
+  url_str += '&chma=0,0,10,10&chs=700x200&cht=bhg&chxs=0,000000,0,0,_&chxt=y&chan&chf=bg,s,EFEFEF11'
 
   return url_str
 
