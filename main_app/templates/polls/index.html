@@ -49,7 +49,7 @@
                 <div class="ms-2 me-auto">
                   <h3>{{ poll.title }}</h3>
                   <h4>{{ poll.notes }}</h4>
-                  {% if pole.expires %}
+                  {% if poll.expires %}
                     <h4>Closes ~ {{ poll.expires|timeuntil }}</h4>
                   {% endif %}
                 </div>
