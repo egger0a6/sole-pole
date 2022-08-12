@@ -7,20 +7,22 @@
 
 {% block content %}
 
-<div class="page-header">
-  {% if poll %}
-    <h1>Edit this Poll</h1>
-  {% else %}
-    <h1>Create a Poll</h1>
-  {% endif %}
-  <img src="{% static 'images/poll.png' %}" alt="poll logo"/>
+<div class='container mt-5'>
+  <div class="page-header">
+    {% if poll %}
+      <h1>Edit this Poll</h1>
+    {% else %}
+      <h1>Create a Poll</h1>
+    {% endif %}
+    <img src="{% static 'images/poll.png' %}" alt="poll logo"/>
+  </div>
+  <form action="" method="post" class="form-container">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn submit mt-4">Submit</button>
+  </form>
 </div>
-<form action="" method="post" class="form-container">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit</button>
-</form>
 
 {% endblock %}

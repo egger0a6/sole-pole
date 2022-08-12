@@ -1,34 +1,43 @@
-.card-container {
-  padding: 0 30px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center ;
-}
-
-.card {
-  width: 275px;
-  margin: 10px;
-  border: var(--borders);
-}
-
-.card-content {
+.main-container {
   padding: 10px;
-  width: 100%;
-  background: rgb(5,187,180, 0.7);
+  border-radius: 15px;
+  background: rgba(5,187,180,0.5);
 }
 
-.card > a {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .main-container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.list-group-item {
+  background: rgb(39,67,157);
+  border-bottom: 2px solid rgb(100, 149, 237);
+  padding: 10px;
+}
+
+.list-group-item > a {
   text-decoration: none;
   color: var(--text-color);
 }
 
-.card h2 {
-  margin: 10px 0;
-  font-size: var(--font-xl);
+.list-group-item h3 {
+  font-weight: 700;
+  font-size: 2rem;
 }
 
-.card p {
-  margin: 5px 0;
-  font-size: var(--font-reg);
+.btn {
+  align-self: center;
+  color: white;
+  border-color: white;
+  background: rgb(100, 149, 237, 0.6);
+}
+
+.btn:hover {
+  background: rgb(46,89,167);
+}
+
+p {
+  text-align: center;
 }

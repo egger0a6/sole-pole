@@ -11,43 +11,77 @@
 
 {% block content %}
 
-<section class="page-header">
-  <h1>Available Polls</h1>
-</section>
+  <div class="container main-container mt-5">
+    <section class="page-header">
+      <h1>Available Polls</h1>
+    </section>
 
-<section class="card-container">
-  {% for poll in public_polls %}
-    <div class="card">
-      <a href="{% url 'polls_detail' poll.id %}">
-        <div class="card-content">
-          <h2 class="card-title">{{ poll.title }}</h2>
-          {% if poll.notes %}
-          <p>{{ poll.notes }}</p>
-          {% endif %}
-        </div>
-      </a>
+    <div class="row p-2">
+      <ul class="list-group">
+        {% for poll in public_polls %}
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <a href="{% url 'polls_detail' poll.id %}">
+              <div class="ms-2 me-auto">
+                <h3>{{ poll.title }}</h3>
+                <h4>{{ poll.notes }}</h4>
+                {% if poll.expires %}
+                  <h4>Closes ~ {{ poll.expires|timeuntil }}</h4>
+                {% endif %}
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
-  {% endfor %}
-</section>
 
-<section class="page-header">
-  <h1>Your Polls</h1>
-</section>
-{% if user.is_authenticated %}
-  <section class="card-container">
-    {% for poll in user_polls %}
-      <div class="card">
-        <a href="{% url 'polls_detail' poll.id %}">
-          <div class="card-content">
-            <h2 class="card-title">{{ poll.title }}</h2>
-            {% if poll.notes %}
-            <p>{{ poll.notes }}</p>
-            {% endif %}
-          </div>
-        </a>
+    <div class="row">
+      {% if user.is_authenticated %}
+      <p>
+        <button class="btn collapse-btn mt-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-user-polls" aria-expanded="false" aria-controls="collapse-user-polls">
+          Your Polls
+        </button>
+      </p>
+      <div class="collapse" id="collapse-user-polls">
+        <ul class="list-group">
+          {% for poll in user_polls %}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <a href="{% url 'polls_detail' poll.id %}">
+                <div class="ms-2 me-auto">
+                  <h3>{{ poll.title }}</h3>
+                  <h4>{{ poll.notes }}</h4>
+                  {% if pole.expires %}
+                    <h4>Closes ~ {{ poll.expires|timeuntil }}</h4>
+                  {% endif %}
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
-    {% endfor %}
-  </section>
-{% endif %}
+      {% endif %}
+    </div>
+
+    <div class="row">
+      <p>
+        <button class="btn collapse-btn mt-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-expired" aria-expanded="false" aria-controls="collapse-expired">
+          Show Closed Polls
+        </button>
+      </p>
+      <div class="collapse" id="collapse-expired">
+        <ul class="list-group">
+          {% for poll in expired_polls %}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <a href="{% url 'polls_detail' poll.id %}">
+                <div class="ms-2 me-auto">
+                  <h3>{{ poll.title }}</h3>
+                  <h4>{{ poll.notes }}</h4>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}"/>
+{% endblock %}
 
 {% block content %}
 
+<div class="container mt-5">
 <h1>About Sole-Poll</h1>
 <hr />
-<p class='page-content'>
+<h2>
   Create simple polls!
-</p>
+</h2>
+</div>
 
 {% endblock %}

@@ -1,13 +1,20 @@
-.poll-container {
-  padding: 35px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.details-container {
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(5,187,180,0.5);
+  text-align: center;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .details-container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .poll-details {
   width: 98%;
+  text-align: center;
 }
 
 .poll-actions {
@@ -24,6 +31,7 @@
 .subsection-title {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 12px;
 }
 
@@ -31,13 +39,9 @@
   margin: 0 8px;
 }
 
-.color-block {
-  margin: 5px;
-  margin-right: 10px;
-}
-
 .poll-details h1 {
-  font-size: var(--font-xxl);
+  font-size: 4rem;
+  font-weight: 700;
   margin: 15px 0 3px;
 }
 
@@ -61,15 +65,14 @@
 .options-container > section {
   width: 80%;
   min-width: 360px;
-  border: var(--borders);
-  border-radius: var(--card-border-radius);
+  border: 2px solid rgb(100, 149, 237);
+  border-radius: 15px;
   padding: 10px;
-  box-shadow: var(--card-box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
-  background: rgb(5,187,180, 0.7);
+  background: rgb(39,67,157);
 }
 
 .options h2 {
@@ -104,46 +107,39 @@
 .options td {
   padding: 8px 5px;
   font-size: var(--font-reg);
+  border-bottom: 1px solid rgb(100, 149, 237);;
 }
 
 .options th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
-  border-bottom: rgb(2,92,89) solid 2px;
+  border-bottom: 3px solid rgb(100, 149, 237);
 }
 
-#file-input {
-  overflow: hidden;
-  position: absolute;
-  width: 0.1px;
-  height: 0.1px;
+.btn {
+  align-self: center;
+  color: white;
+  border-color: white;
+  background: rgb(100, 149, 237, 0.6);
 }
 
-#file-name {
-  margin-bottom: 10px;
+.btn:hover {
+  background: rgb(46,89,167);
 }
 
-@media only screen and (min-width: 768px) {
-  .poll-container {
-    padding: 35px 30px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-  }
-
-  .options-container {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  .options-container > section {
-    width: 45%;
-  }
+img {
+  max-width: 700px;
+  max-height: 200px;
+  border-radius: 15px;
 }
 
-@media only screen and (min-width: 1024px) {
-  .options-container {
-    padding: 0 40px;
-  }
+.image-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.tfooter  {
+  font-size: 2rem;
+  font-weight: bold;
 }
