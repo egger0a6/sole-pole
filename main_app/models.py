@@ -2,9 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from datetime import datetime
 from django.utils import timezone, dateformat
-from django.utils.timezone import now
 
 # Create your models here.
 
