@@ -1,11 +1,12 @@
-.container {
+.details-container {
   padding: 10px;
   border-radius: 15px;
   background: rgba(5,187,180,0.5);
+  text-align: center;
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .container {
+  .details-container {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
@@ -13,6 +14,7 @@
 
 .poll-details {
   width: 98%;
+  text-align: center;
 }
 
 .poll-actions {
@@ -29,6 +31,7 @@
 .subsection-title {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 12px;
 }
 
@@ -37,7 +40,8 @@
 }
 
 .poll-details h1 {
-  font-size: var(--font-xxl);
+  font-size: 4rem;
+  font-weight: 700;
   margin: 15px 0 3px;
 }
 
@@ -61,14 +65,14 @@
 .options-container > section {
   width: 80%;
   min-width: 360px;
-  border: var(--borders);
-  border-radius: var(--card-border-radius);
+  border: 2px solid rgb(100, 149, 237);
+  border-radius: 15px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
-  background: rgb(5,187,180, 0.7);
+  background: rgb(39,67,157);
 }
 
 .options h2 {
@@ -103,10 +107,39 @@
 .options td {
   padding: 8px 5px;
   font-size: var(--font-reg);
+  border-bottom: 1px solid rgb(100, 149, 237);;
 }
 
 .options th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
-  border-bottom: rgb(2,92,89) solid 2px;
+  border-bottom: 3px solid rgb(100, 149, 237);
+}
+
+.btn {
+  align-self: center;
+  color: white;
+  border-color: white;
+  background: rgb(100, 149, 237, 0.6);
+}
+
+.btn:hover {
+  background: rgb(46,89,167);
+}
+
+img {
+  max-width: 700px;
+  max-height: 200px;
+  border-radius: 15px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.tfooter  {
+  font-size: 2rem;
+  font-weight: bold;
 }

@@ -11,88 +11,96 @@
 
 {% block content %}
 
-<div class="container mt-5">
-  <div class="poll-details">
-    <h1>{{ poll.title }}</h1>
-    {% if poll.notes %}
-      <h2>{{ poll.notes }}</h2>
-    {% endif %}
-    {% if not poll.expired %}
-      {% if poll.expires %}
-        <h3>Closes: {{ poll.expires|timeuntil }}</h3>
+<div class="container details-container mt-5">
+  
+  <div class="row">
+    <div class="poll-details">
+      <h1>{{ poll.title }}</h1>
+      {% if poll.notes %}
+        <h2>{{ poll.notes }}</h2>
       {% endif %}
-    {% else %}
-      <h3>Poll Closed</h3>
-    {% endif %}
-    {% if user.id == poll.user_id %}
-      <div class="poll-actions">
-        <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
-        <a href="{% url 'polls_delete' poll.id %}" class="btn danger">Delete</a>
-      </div>
-    {% endif %}
-  </div>
-
-  <div class="options-container">
-    <section class="options">
-      <div class="subsection-title">
-        <h2>Options</h2>
-      </div>
-      {% if user.id == poll.user_id %}
-        {% if not poll.expired %}
-          <h3>Add an Option</h3>
-          <form
-            action="{% url 'add_option' poll.id %}"
-            method="post" 
-            class="subsection-content"
-          >
-            {% csrf_token %}
-            {{ option_form.as_p }}
-            <button type="submit" class="btn">Add Option</button>
-          </form>
-        {% else %}
-          <h3>Poll is closed</h3>
+      {% if not poll.expired %}
+        {% if poll.expires %}
+          <h3>Closes: {{ poll.expires|timeuntil }}</h3>
         {% endif %}
-      {% endif %}
-      {% if poll.option_set.all.count %}
-        <table>
-          <thead>
-            <tr><th>Options</th><th>Results</th><th></th></tr>
-          </thead>
-          <tbody>
-            {% for option in poll.option_set.all %}
-              <tr>
-                <td>{{ option.title }}</td>
-                <td>{{ option.count }}</td>
-                <td>
-                  {% if not poll.expired %}
-                    <form action="{% url 'update_option' poll.id option.id %}" method="post">
-                      {% csrf_token %}
-                      <button type="submit">Vote</button>
-                    </form>
-                  {% endif %}
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Total Votes:</td>
-              <td>{{ total_votes }}</td>
-            </tr>
-          </tfoot>
-        </table>
       {% else %}
-        <div class="subsection-content">
-          <p>No options yet.</p>
-        </div>
-      {% endif %}
-    </section>
-    <div>
-      {% if chart_url %}
-        <img src="{{ chart_url }}" alt="chart with poll results">
+        <h3>Poll Closed</h3>
       {% endif %}
     </div>
   </div>
+
+  <div class="row mt-5">
+    <div class="options-container">
+      <section class="options">
+        <div class="subsection-title">
+          <h2>Options</h2>
+        </div>
+        {% if user.id == poll.user_id %}
+          {% if not poll.expired %}
+            <h3>Add an Option</h3>
+            <form
+              action="{% url 'add_option' poll.id %}"
+              method="post" 
+              class="subsection-content m-2"
+            >
+              {% csrf_token %}
+              {{ option_form.as_p }}
+              <button type="submit" class="btn m-4">Add Option</button>
+            </form>
+          {% else %}
+            <h3>Poll is closed</h3>
+          {% endif %}
+        {% endif %}
+        {% if poll.option_set.all.count %}
+          <table>
+            <thead>
+              <tr><th>Options</th><th>Results</th><th></th></tr>
+            </thead>
+            <tbody>
+              {% for option in poll.option_set.all %}
+                <tr>
+                  <td>{{ option.title }}</td>
+                  <td>{{ option.count }}</td>
+                  <td>
+                    {% if not poll.expired %}
+                      <form action="{% url 'update_option' poll.id option.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Vote</button>
+                      </form>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><span class=tfooter>Total Votes:</span></td>
+                <td><span class=tfooter>{{ total_votes }}</span></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        {% else %}
+          <div class="subsection-content">
+            <p>No options yet.</p>
+          </div>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+
+  <div class="row me-5 ms-5">
+    {% if chart_url %}
+      <img src="{{ chart_url }}" alt="chart with poll results">
+    {% endif %}
+  </div>
+
+  {% if user.id == poll.user_id %}
+    <div class="poll-actions">
+      <a href="{% url 'polls_update' poll.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'polls_delete' poll.id %}" class="btn danger">Delete</a>
+    </div>
+  {% endif %}
 </div>
 
 {% endblock %}
