@@ -16,7 +16,8 @@
 This project is a Django Application that allows users to create simple polls that anyone can vote on. Your "Sole" location to create polls.
 
 ## Getting Started
-[Project Planning Trello Board](https://trello.com/b/scCt6DyH/sole-poll)
+- [Visit here](https://sole-poll.herokuapp.com/)
+- [Project Planning Trello Board](https://trello.com/b/scCt6DyH/sole-poll)
 
 ## Usage
 * **Create Polls**
