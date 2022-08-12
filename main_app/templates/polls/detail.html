@@ -63,6 +63,12 @@
             </tr>
           {% endfor %}
         </tbody>
+        <tfoot>
+          <tr>
+            <td>Total Votes:</td>
+            <td>{{ total_votes }}</td>
+          </tr>
+        </tfoot>
       </table>
     {% else %}
       <div class="subsection-content">
@@ -70,6 +76,11 @@
       </div>
     {% endif %}
   </section>
+  <div>
+    {% if chart_url %}
+      <img src="{{ chart_url }}" alt="chart with poll results">
+    {% endif %}
+  </div>
 </div>
 
 {% endblock %}

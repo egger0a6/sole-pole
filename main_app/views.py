@@ -9,6 +9,59 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Poll, Option
 from .forms import OptionForm, PollDateTimeForm
 from django.utils import timezone
+from django.db.models import Sum
+
+
+CHART_COLORS = [
+  'ffcd00', 
+  'ff3051', 
+  '5eac24', 
+  '1869b7',
+  '6a4c93',
+  '17c3b2',
+  'e85d04',
+  'ef476f',
+  '80ed99',
+  '073b4c',
+  '00bbf9',
+  '7678ed',
+  '89b0ae',
+  '840032',
+  'ffdc5e'
+]
+
+def chart_url_builder(options):
+  url_str = 'https://image-charts.com/chart?chbr=6&chco='
+  chco = ''
+  chd = ''
+  chdl = ''
+  chm = ''
+
+  i = 0
+  for option in options:
+    chco += (CHART_COLORS[i] + ',')
+
+    if (i == len(options) - 1):
+      chd += str(option.count)
+    else:
+      chd += (str(option.count) + '|')
+    
+    chdl += option.title + '|'
+    chm += f'N,000000,{i},,10|'
+
+    i += 1
+
+  url_str += chco
+  url_str += '&chd=t:'
+  url_str += chd
+  url_str += '&chdl='
+  url_str += chdl
+  url_str += '&chdls=000000,15&chds=0,50000&chm='
+  url_str += chm
+  url_str += '&chma=0,0,10,10&chs=700x200&cht=bhg&chxs=0,000000,0,0,_&chxt=y&chan'
+
+  return url_str
+
 
 # Create your views here.
 
@@ -38,14 +91,24 @@ def polls_index(request):
 
 def polls_detail(request, poll_id):
   poll = Poll.objects.get(id=poll_id)
+  options = Option.objects.filter(poll=poll_id)
+  chart_url = ''
+
+  if (options):
+    chart_url = chart_url_builder(options)
+
   if poll.expires:
     if (poll.expires < timezone.now()):
       poll.expired = True
       poll.save()
+
   option_form = OptionForm()
+  total_votes = Option.objects.filter(poll=poll_id).aggregate(Sum('count'))['count__sum']
   return render(request, 'polls/detail.html', {
     'poll': poll,
     'option_form': option_form,
+    'total_votes': total_votes,
+    'chart_url': chart_url,
   })
 
 @login_required
