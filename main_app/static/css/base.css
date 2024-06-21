@@ -43,7 +43,7 @@ body {
   --font-l: 1.8rem;
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
-  background: url("/static/images/bg_image.png") no-repeat center center fixed; 
+  background: linear-gradient(320deg, rgba(7,65,115,1) 63%, rgba(5,187,180,1) 100%); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
