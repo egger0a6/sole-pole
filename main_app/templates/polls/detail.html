@@ -57,7 +57,7 @@
               <tr><th>Options</th><th>Results</th><th></th></tr>
             </thead>
             <tbody>
-              {% for option in poll.option_set.all %}
+              {% for option in poll.option_set.all|dictsortreversed:"count" %}
                 <tr>
                   <td>{{ option.title }}</td>
                   <td>{{ option.count }}</td>
@@ -65,7 +65,7 @@
                     {% if not poll.expired %}
                       <form action="{% url 'update_option' poll.id option.id %}" method="post">
                         {% csrf_token %}
-                        <button type="submit">Vote</button>
+                        <button type="submit" class="button-29">Vote</button>
                       </form>
                     {% endif %}
                   </td>
@@ -89,7 +89,7 @@
     </div>
   </div>
 
-  <div class="row me-5 ms-5">
+  <div class="image-container">
     {% if chart_url %}
       <img src="{{ chart_url }}" alt="chart with poll results">
     {% endif %}

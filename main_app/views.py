@@ -91,7 +91,7 @@ def polls_index(request):
 
 def polls_detail(request, poll_id):
   poll = Poll.objects.get(id=poll_id)
-  options = Option.objects.filter(poll=poll_id)
+  options = Option.objects.filter(poll=poll_id).order_by('count')
   chart_url = ''
   
   if (options):
