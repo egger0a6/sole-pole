@@ -7,6 +7,7 @@
   type="text/css" 
   href="{% static 'css/polls/poll-detail.css' %}"
 />
+<script src="{% static 'scripts/poll_detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -24,8 +25,14 @@
           <h3>Closes: {{ poll.expires|timeuntil }}</h3>
         {% endif %}
       {% else %}
-        <h3>Poll Closed</h3>
+        <h3 class="fw-bolder fs-2 fst-italic text-warning">Poll Ended</h3>
       {% endif %}
+      <button 
+        id="linkBtn"
+        onclick="copyLink()"
+        class="mt-4 w-25 fs-2 fw-bolder button-25"
+        style="float: none; margin: 0 auto;"
+        >Copy Poll Link</button>
     </div>
   </div>
 
@@ -48,7 +55,7 @@
               <button type="submit" class="btn m-4">Add Option</button>
             </form>
           {% else %}
-            <h3>Poll is closed</h3>
+            <h3 class="text-warning">Poll is closed</h3>
           {% endif %}
         {% endif %}
         {% if poll.option_set.all.count %}

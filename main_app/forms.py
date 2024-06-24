@@ -15,3 +15,4 @@ class PollDateTimeForm(ModelForm):
     widgets = {
       'expires': DateTimePickerInput()
     }
+    help_texts = {'expires': ('Clear date field for no expiration.')}
