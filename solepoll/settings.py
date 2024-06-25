@@ -1,4 +1,5 @@
 import os
+import django_heroku
 import environ
 env = environ.Env()
 environ.Env.read_env()
@@ -139,3 +140,5 @@ LOGOUT_REDIRECT_URL = 'home'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
+
+django_heroku.settings(locals())
