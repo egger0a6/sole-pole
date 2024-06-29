@@ -1,5 +1,9 @@
 # .dockerignore
 
 data/
+fly.toml
+.git/
+*.sqlite3
+.env
 
 # Other files and folder
