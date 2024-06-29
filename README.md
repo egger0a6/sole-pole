@@ -16,7 +16,7 @@
 This project is a Django Application that allows users to create simple polls that anyone can vote on. Your "Sole" location to create polls.
 
 ## Getting Started
-- [Visit here](https://sole-poll.herokuapp.com/)
+- [Visit here](https://sole-poll.fly.dev/)
 - [Project Planning Trello Board](https://trello.com/b/scCt6DyH/sole-poll)
 
 ## Usage
@@ -35,7 +35,12 @@ This project is a Django Application that allows users to create simple polls th
 * ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 * ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 * ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-* ![Replit](https://img.shields.io/badge/replit-667881?style=for-the-badge&logo=replit&logoColor=white)
+
+* <a href="https://fly.io/">
+    <img src="https://fly.io/static/images/brand/logo-landscape.svg" width="176" height="60">
+  </a>
+  
+  *Fly.io*
 
 ## Credits
 - Favicon and home logo created by srip - [Flaticon](https://www.flaticon.com/free-icons/poll)
